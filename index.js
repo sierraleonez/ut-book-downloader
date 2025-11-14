@@ -209,16 +209,18 @@ async function makeMyLifeEasier(bookCode) {
     }
 }
 
+
+
+// downloadAllPage()
+const app = express();
+app.use(express.json());
+
 app.get('/set-cookie', (req, res) => {
     const cookie = req.query.cookie;
     if (!cookie) return res.status(400).json({ error: 'cookie query param required' });
     COOKIE = String(cookie);
     res.json({ ok: true, cookie: COOKIE });
 });
-
-// downloadAllPage()
-const app = express();
-app.use(express.json());
 
 app.get('/get-book-detail', async (req, res) => {
     try {
