@@ -1,0 +1,50 @@
+[
+  {
+    "module": "Modul 1",
+    "totalPage": 65
+  },
+  {
+    "module": "Modul 2",
+    "totalPage": 68
+  },
+  {
+    "module": "Modul 3",
+    "totalPage": 70
+  },
+  {
+    "module": "Modul 4",
+    "totalPage": 59
+  },
+  {
+    "module": "Modul 5",
+    "totalPage": 65
+  },
+  {
+    "module": "Modul 6",
+    "totalPage": 69
+  },
+  {
+    "module": "Modul 7",
+    "totalPage": 68
+  },
+  {
+    "module": "Modul 8",
+    "totalPage": 50
+  },
+  {
+    "module": "Modul 9",
+    "totalPage": 71
+  },
+  {
+    "module": "Modul 10",
+    "totalPage": 45
+  },
+  {
+    "module": "Modul 11",
+    "totalPage": 62
+  },
+  {
+    "module": "Modul 12",
+    "totalPage": 50
+  }
+]
