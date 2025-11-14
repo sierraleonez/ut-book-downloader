@@ -1,13 +1,13 @@
 // const cheerio = require('cheerio');
 
-const { default: parse, HTMLElement } = require('node-html-parser');
-const path = require('path');
-const fs = require('fs').promises;
-const pageData = require('./bookPageData/EKMA411603.json')
-const express = require('express');
-const { pathToFileURL } = require('url');
+import parse, { HTMLElement } from 'node-html-parser';
+import path from 'path';
+import fs from 'fs/promises';
+import pageData from './bookPageData/EKMA411603.json' assert { type: 'json' };
+import express from 'express';
+import { pathToFileURL } from 'url';
 
-let COOKIE = "_ga_Q3NS1R2SYD=GS2.1.s1763076944$o1$g1$t1763076947$j57$l0$h0; _gat_gtag_UA_1591318_5=1; _gid=GA1.3.1862575113.1763076945; _ga=GA1.1.1288903398.1763076945; PHPSESSID=e253gfnmss20l4o3ua99vj1acn"
+let COOKIE = ""
 
 async function downloadPage({bookCode, moduleCode, pageNumber = 1, cookie = ""}) {
     // console.log(moduleCode, pageNumber)
@@ -48,10 +48,12 @@ async function downloadPage({bookCode, moduleCode, pageNumber = 1, cookie = ""})
         console.log(`Saved ${filename}`, contentType);
 
         const base64 = buffer.toString('base64');
-        // If you want a data URI instead, return `data:${contentType};base64,${base64}`
-        return base64;
+        // If you want a data URI instead, return 
+        return `data:${contentType};base64,${base64}`;
     } catch (err) {
+        
         console.log(err)
+        return err
     }
 }
 
@@ -286,14 +288,21 @@ app.get('/download-page', async (req, res) => {
         const cached = await getCachedPageBase64(bookCode, moduleCode, pageNumber);
         if (cached) return res.json(cached);
         
-        const base64 = await downloadPage({
+        const downloadResult = await downloadPage({
             bookCode,
             moduleCode,
             cookie: COOKIE,
             pageNumber
         })
 
-        res.json({ base64, metadata: { bookCode, moduleCode, pageNumber } });
+        if (!(downloadResult instanceof Error)) {
+            const base64 = downloadResult
+            res.json({ base64, metadata: { bookCode, moduleCode, pageNumber, cookie: COOKIE, source: 'fetch' } });
+        } else {
+            const errorMessage = downloadResult
+            throw Error(errorMessage)
+        }
+
     } catch (err) {
         res.status(500).json({ error: err.message || String(err) });
     }
@@ -305,5 +314,7 @@ const PORT = 3001;
 app.listen(PORT, () => {
     console.log(`Server listening on http://localhost:${PORT}`);
 });
+
+
 
 // n8n -> server -> download semua gambar

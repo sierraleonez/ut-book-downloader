@@ -7,5 +7,6 @@
   },
   "scripts": {
     "download-book": "node ./index.js"
-  }
+  },
+  "type": "module"
 }
