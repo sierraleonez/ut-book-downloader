@@ -1,0 +1,41 @@
+{
+  "outPath": "/Users/almer/almer/ut-task-automator/pageData/ESPA422203-module-pages.json",
+  "modulePages": [
+    {
+      "module": "Modul 1",
+      "totalPage": 66
+    },
+    {
+      "module": "Modul 2",
+      "totalPage": 52
+    },
+    {
+      "module": "Modul 3",
+      "totalPage": 54
+    },
+    {
+      "module": "Modul 4",
+      "totalPage": 30
+    },
+    {
+      "module": "Modul 5",
+      "totalPage": 40
+    },
+    {
+      "module": "Modul 6",
+      "totalPage": 38
+    },
+    {
+      "module": "Modul 7",
+      "totalPage": 38
+    },
+    {
+      "module": "Modul 8",
+      "totalPage": 46
+    },
+    {
+      "module": "Modul 9",
+      "totalPage": 22
+    }
+  ]
+}

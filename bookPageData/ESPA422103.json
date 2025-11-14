@@ -1,42 +1,38 @@
 [
   {
     "module": "Modul 1",
-    "totalPage": 74
+    "totalPage": 36
   },
   {
     "module": "Modul 2",
-    "totalPage": 56
+    "totalPage": 38
   },
   {
     "module": "Modul 3",
-    "totalPage": 47
+    "totalPage": 54
   },
   {
     "module": "Modul 4",
-    "totalPage": 26
+    "totalPage": 55
   },
   {
     "module": "Modul 5",
-    "totalPage": 40
+    "totalPage": 47
   },
   {
     "module": "Modul 6",
-    "totalPage": 44
+    "totalPage": 58
   },
   {
     "module": "Modul 7",
-    "totalPage": 35
+    "totalPage": 49
   },
   {
     "module": "Modul 8",
-    "totalPage": 53
+    "totalPage": 36
   },
   {
     "module": "Modul 9",
-    "totalPage": 20
-  },
-  {
-    "module": "Modul 10",
-    "totalPage": 1
+    "totalPage": 50
   }
 ]

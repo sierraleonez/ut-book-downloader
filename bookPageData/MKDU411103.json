@@ -1,0 +1,38 @@
+[
+  {
+    "module": "Modul 1",
+    "totalPage": 20
+  },
+  {
+    "module": "Modul 2",
+    "totalPage": 24
+  },
+  {
+    "module": "Modul 3",
+    "totalPage": 24
+  },
+  {
+    "module": "Modul 4",
+    "totalPage": 24
+  },
+  {
+    "module": "Modul 5",
+    "totalPage": 50
+  },
+  {
+    "module": "Modul 6",
+    "totalPage": 26
+  },
+  {
+    "module": "Modul 7",
+    "totalPage": 36
+  },
+  {
+    "module": "Modul 8",
+    "totalPage": 22
+  },
+  {
+    "module": "Modul 9",
+    "totalPage": 34
+  }
+]

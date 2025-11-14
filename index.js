@@ -6,6 +6,7 @@ import fs from 'fs/promises';
 import pageData from './bookPageData/EKMA411603.json' assert { type: 'json' };
 import express from 'express';
 import { pathToFileURL } from 'url';
+import { loginAndGetCookie } from './get-cookie'
 
 let COOKIE = ""
 
@@ -283,6 +284,10 @@ app.get('/download-page', async (req, res) => {
         const { bookCode, moduleCode, pageNumber = '1' } = req.query;
         if (!bookCode || !moduleCode) {
             return res.status(400).json({ error: 'bookCode and moduleCode are required' });
+        }
+
+        if (!COOKIE) {
+            COOKIE = await loginAndGetCookie()
         }
 
         const cached = await getCachedPageBase64(bookCode, moduleCode, pageNumber);

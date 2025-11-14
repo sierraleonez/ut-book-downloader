@@ -6,7 +6,7 @@
     "node-html-parser": "^7.0.1"
   },
   "scripts": {
-    "download-book": "node ./index.js"
+    "download-book": "node --env-file=./env ./index.js"
   },
   "type": "module"
 }
