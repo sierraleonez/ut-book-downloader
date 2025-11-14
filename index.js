@@ -215,9 +215,9 @@ async function makeMyLifeEasier(bookCode) {
 const app = express();
 app.use(express.json());
 
-app.get('/set-cookie', (req, res) => {
-    const cookie = req.query.cookie;
-    if (!cookie) return res.status(400).json({ error: 'cookie query param required' });
+app.post('/set-cookie', (req, res) => {
+    const cookie = req.body && req.body.cookie;
+    if (!cookie) return res.status(400).json({ error: 'cookie field required in JSON body' });
     COOKIE = String(cookie);
     res.json({ ok: true, cookie: COOKIE });
 });
