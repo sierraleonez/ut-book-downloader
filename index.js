@@ -6,7 +6,7 @@ import fs from 'fs/promises';
 import pageData from './bookPageData/EKMA411603.json' assert { type: 'json' };
 import express from 'express';
 import { pathToFileURL } from 'url';
-import { loginAndGetCookie } from './get-cookie'
+import { loginAndGetCookie } from './get-cookie.js'
 
 let COOKIE = ""
 

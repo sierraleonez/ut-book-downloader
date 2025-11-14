@@ -1,3 +1,5 @@
+import puppeteer from "puppeteer";
+
 export async function loginAndGetCookie() {
     const username = process.env.UT_USERNAME;
   const password = process.env.UT_PASSWORD;

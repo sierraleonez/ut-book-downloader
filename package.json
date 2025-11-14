@@ -3,10 +3,11 @@
     "@google-cloud/local-auth": "^2.1.0",
     "express": "^5.1.0",
     "googleapis": "^105.0.0",
-    "node-html-parser": "^7.0.1"
+    "node-html-parser": "^7.0.1",
+    "puppeteer": "^24.28.0"
   },
   "scripts": {
-    "download-book": "node --env-file=./env ./index.js"
+    "download-book": "node --env-file=.env ./index.js"
   },
   "type": "module"
 }
