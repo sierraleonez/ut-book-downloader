@@ -9,11 +9,13 @@ import { pathToFileURL } from 'url';
 import { loginAndGetCookie } from './get-cookie.js'
 
 let COOKIE = ""
+let COOKIE_EXPIRY = ""
 
 async function downloadPage({bookCode, moduleCode, pageNumber = 1, cookie = ""}) {
     // console.log(moduleCode, pageNumber)
     try {
-        const res = await fetch(`https://pustaka.ut.ac.id/reader/services/view.php?doc=${moduleCode}&format=jpg&subfolder=${bookCode}/&page=${pageNumber}`, {
+        const url = `https://pustaka.ut.ac.id/reader/services/view.php?doc=${moduleCode}&format=jpg&subfolder=${bookCode}/&page=${pageNumber}`
+        const res = await fetch(url, {
             "headers": {
                 "accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
                 "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,id;q=0.7",
@@ -254,10 +256,6 @@ app.get('/get-book-detail', async (req, res) => {
     }
 });
 
-
-
-
-
 // extract cache-check into helper and call it
         async function getCachedPageBase64(bookCode, moduleCode, pageNumber, extension = 'jpeg') {
             try {
@@ -285,9 +283,15 @@ app.get('/download-page', async (req, res) => {
         if (!bookCode || !moduleCode) {
             return res.status(400).json({ error: 'bookCode and moduleCode are required' });
         }
-
+        
+        // ensure COOKIE is set and not expired
         if (!COOKIE) {
-            COOKIE = await loginAndGetCookie()
+            COOKIE = await loginAndGetCookie();
+            COOKIE_EXPIRY = Date.now() + 10 * 60 * 1000; // 10 minutes
+        } else if (typeof COOKIE_EXPIRY !== 'undefined' && Date.now() > COOKIE_EXPIRY) {
+            // cookie present but expired — refresh it
+            COOKIE = await loginAndGetCookie();
+            COOKIE_EXPIRY = Date.now() + 10 * 60 * 1000; // 10 minutes
         }
 
         const cached = await getCachedPageBase64(bookCode, moduleCode, pageNumber);
