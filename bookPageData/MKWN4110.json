@@ -1,29 +1,26 @@
-{
-  "outPath": "/Users/almer/almer/ut-task-automator/pageData/MKWN4110-module-pages.json",
-  "modulePages": [
-    {
-      "module": "Modul 1",
-      "totalPage": 40
-    },
-    {
-      "module": "Modul 2",
-      "totalPage": 49
-    },
-    {
-      "module": "Modul 3",
-      "totalPage": 42
-    },
-    {
-      "module": "Modul 4",
-      "totalPage": 42
-    },
-    {
-      "module": "Modul 5",
-      "totalPage": 52
-    },
-    {
-      "module": "Modul 6",
-      "totalPage": 47
-    }
-  ]
-}
+[
+  {
+    "module": "Modul 1",
+    "totalPage": 40
+  },
+  {
+    "module": "Modul 2",
+    "totalPage": 49
+  },
+  {
+    "module": "Modul 3",
+    "totalPage": 42
+  },
+  {
+    "module": "Modul 4",
+    "totalPage": 42
+  },
+  {
+    "module": "Modul 5",
+    "totalPage": 52
+  },
+  {
+    "module": "Modul 6",
+    "totalPage": 47
+  }
+]

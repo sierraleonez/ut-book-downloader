@@ -1,6 +1,4 @@
-{
-  "outPath": "/Users/almer/almer/ut-task-automator/pageData/ESPA422203-module-pages.json",
-  "modulePages": [
+[
     {
       "module": "Modul 1",
       "totalPage": 66
@@ -38,4 +36,3 @@
       "totalPage": 22
     }
   ]
-}
