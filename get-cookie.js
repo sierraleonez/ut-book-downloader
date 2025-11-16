@@ -7,7 +7,18 @@ export async function loginAndGetCookie() {
         throw new Error('Set UT_USERNAME and UT_PASSWORD environment variables before running.');
     }
 
-		const browser = await puppeteer.launch({ headless: true });
+		const browser = await puppeteer.launch({ headless: true, args: [
+       '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-session-crashed-bubble',
+      '--disable-accelerated-2d-canvas',
+      '--no-first-run',
+      '--no-zygote',
+      '--single-process',
+      '--noerrdialogs',
+      '--disable-gpu'
+    ] });
   	const page = await browser.newPage();
 
     const url = `https://pustaka.ut.ac.id/reader/index.php?modul=EKMA411603`;
