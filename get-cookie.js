@@ -1,4 +1,8 @@
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-extra';
+import { executablePath } from 'puppeteer'
+import StealthPlugin from "puppeteer-extra-plugin-stealth";
+
+puppeteer.use(StealthPlugin())
 
 export async function loginAndGetCookie() {
   const username = process.env.UT_USERNAME;
@@ -10,7 +14,8 @@ export async function loginAndGetCookie() {
   }
 
   const browser = await puppeteer.launch({
-    headless: true,
+    headless: false,
+    executablePath: executablePath(),
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
@@ -28,6 +33,14 @@ export async function loginAndGetCookie() {
 
   const url = `https://pustaka.ut.ac.id/reader/index.php?modul=EKMA411603`;
   await page.goto(url, { waitUntil: 'networkidle2' });
+
+  try {
+    await page.waitForSelector('button.g-recaptcha', { timeout: 2000 });
+    await page.click('button.g-recaptcha');
+    await page.waitForTimeout(2000);
+  } catch (err) {
+    // No captcha button found — continue with normal flow
+  }
   await page.waitForSelector('input#username');
   await page.type('input#username', username, { delay: 50 });
   await page.type('input#password', password, { delay: 50 });

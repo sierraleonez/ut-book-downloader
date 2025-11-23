@@ -4,7 +4,9 @@
     "express": "^5.1.0",
     "googleapis": "^105.0.0",
     "node-html-parser": "^7.0.1",
-    "puppeteer": "^24.28.0"
+    "puppeteer": "^24.28.0",
+    "puppeteer-extra": "^3.1.16-next.149",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
   },
   "scripts": {
     "download-book": "node --env-file=.env ./index.js"
