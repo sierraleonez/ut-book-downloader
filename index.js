@@ -126,6 +126,8 @@ app.get('/download-page', async (req, res) => {
         // ensure COOKIE is set and not expired
         if (!COOKIE) {
             COOKIE = await loginAndGetCookie();
+            console.log(COOKIE)
+            return
             COOKIE_EXPIRY = Date.now() + 10 * 60 * 1000; // 10 minutes
         } else if (typeof COOKIE_EXPIRY !== 'undefined' && Date.now() > COOKIE_EXPIRY) {
             // cookie present but expired — refresh it
@@ -158,7 +160,7 @@ app.get('/download-page', async (req, res) => {
 
 
 // Start server
-const PORT = 3001;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`Server listening on http://localhost:${PORT}`);
 });
