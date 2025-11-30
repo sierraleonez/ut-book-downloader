@@ -7,6 +7,7 @@ puppeteer.use(StealthPlugin())
 export async function loginAndGetCookie() {
   const username = process.env.UT_USERNAME;
   const password = process.env.UT_PASSWORD;
+  const isHeadless = process.env.HEADLESS;
   if (!username || !password) {
     throw new Error(
       'Set UT_USERNAME and UT_PASSWORD environment variables before running.'
@@ -14,7 +15,7 @@ export async function loginAndGetCookie() {
   }
 
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: isHeadless,
     executablePath: executablePath(),
     args: [
       '--no-sandbox',
